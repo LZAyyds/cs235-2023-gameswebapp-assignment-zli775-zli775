@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user_profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}" >
+</head>
+<body>
+<div id="navBar">
+    <img id="gameIcon" src="static/img/1.png">
+    <h4><a href="{{ url_for('wishlist.view_wishlist') }}" target="_blank">WishList</a></h4>
+    <h4><a href="/" target="_blank">Back</a></h4>
+
+    <h6 id="navAuthorName">©️Paul/Kevin/Tong</h6>
+</div>
+    <div id="content">
+        <div id="header">
+            <h1>{{ user.username }}'s Profile</h1>
+        </div>
+    <div id="user-activities">
+        <h2>Wishlist</h2>
+        <ul>
+            {% for game in wishlist %}
+                <li>{{ game.title }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Reviews</h2>
+        <ul>
+            {% for review in reviews %}
+                <li>{{ review.game.title }}:{{ review.comment }}</li>
+                <p>Rating: {{ review.rating }}</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

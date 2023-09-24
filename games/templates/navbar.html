@@ -1,0 +1,36 @@
+<div id="navBar">
+    <img id="gameIcon" src="static/img/1.png">
+    <h2>Game Listing</h2>
+    <h4><a href="/" target="_blank">Home</a></h4>
+    <h4><a href="user_profile" target="_blank">User profile</a></h4>
+    <h4><a href="games" target="_blank">All Games</a></h4>
+    <form action="/search" method="get">
+        <input id="searchBar1" type="text" name="query" placeholder="Enter game name">
+        <select name="genre">
+            <option value="">All Genres</option>
+            {% for genre in all_genres %}
+                <option value="{{ genre }}">{{ genre }}</option>
+            {% endfor %}
+        </select>
+        <select name="publisher">
+            <option value="">All Publishers</option>
+            {% for publisher in all_publishers %}
+                <option value="{{ publisher }}">{{ publisher }}</option>
+            {% endfor %}
+        </select>
+        <button id="searchBar2" type="submit">Search</button>
+    </form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-messages">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+    <h6 id="navAuthorName">©️Paul/Kevin/Tong</h6>
+</div>
